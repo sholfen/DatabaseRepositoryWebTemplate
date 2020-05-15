@@ -27,9 +27,17 @@ namespace DBLib.Repositories
             return _sqlConnection.Execute(query, parameter);
         }
 
-        public List<T> Query()
+        public List<T> Query(string col = "*")
         {
-            string query = $"SELECT * FROM {typeof(T).Name}";
+            if (col.Trim() != "*")
+            {
+                col = col.Replace("where", string.Empty);
+                col = col.Replace("drop", string.Empty);
+                var columns = col.Split(',').Select(c => c.Trim());
+                col = string.Join(",", columns);
+            }
+
+            string query = $"SELECT {col} FROM {typeof(T).Name}";
             return _sqlConnection.Query<T>(query).AsList();
         }
 
