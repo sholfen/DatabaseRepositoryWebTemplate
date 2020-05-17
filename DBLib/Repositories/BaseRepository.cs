@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -9,13 +10,13 @@ namespace DBLib.Repositories
 {
     public class BaseRepository<T>
     {
-        protected SqliteConnection _sqlConnection { get; set; }
-        //protected System.Data.SqlClient.SqlConnection sqlConnection { get; set; }
+        //protected SqliteConnection _sqlConnection { get; set; }
+        protected SqlConnection _sqlConnection { get; set; }
 
         public BaseRepository(string connectionString)
         {
-            _sqlConnection = new SqliteConnection(connectionString);
-            _sqlConnection.Open();
+            //_sqlConnection = new SqliteConnection(connectionString);
+            _sqlConnection = new SqlConnection(connectionString);
         }
 
         public int Insert(T parameter)

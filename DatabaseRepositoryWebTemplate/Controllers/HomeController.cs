@@ -15,11 +15,13 @@ namespace DatabaseRepositoryWebTemplate.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IAlbumRepository _albumRepository;
+        private IEmployeeRepository _employeeRepository;
 
-        public HomeController(ILogger<HomeController> logger, IAlbumRepository albumRepository)
+        public HomeController(ILogger<HomeController> logger, IAlbumRepository albumRepository, IEmployeeRepository employeeRepository)
         {
             _logger = logger;
             _albumRepository = albumRepository;
+            _employeeRepository = employeeRepository;
         }
 
         public IActionResult Index()
@@ -41,6 +43,12 @@ namespace DatabaseRepositoryWebTemplate.Controllers
         public JsonResult TestAPI()
         {
             List<Album> list = _albumRepository.Query();
+            return new JsonResult(list);
+        }
+
+        public JsonResult TestE()
+        {
+            List<Employees> list = _employeeRepository.Query();
             return new JsonResult(list);
         }
     }

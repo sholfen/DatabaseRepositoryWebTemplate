@@ -27,6 +27,7 @@ namespace DatabaseRepositoryWebTemplate
         public void ConfigureServices(IServiceCollection services)
         {         
             services.AddTransient<IAlbumRepository, AlbumRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddControllersWithViews();
         }
 
@@ -44,9 +45,10 @@ namespace DatabaseRepositoryWebTemplate
                 app.UseHsts();
             }
 
-            Tools.ConnectionString = Configuration.GetConnectionString("SQLiteConnction");
+            //Tools.ConnectionString = Configuration.GetConnectionString("SQLiteConnction");
             //Tools.ConnectionString = @"Data Source=C:\sample.sqlite;";
             //app.UseStaticFiles(@"/DataFile/sample.sqlite");
+            Tools.ConnectionString = Configuration.GetConnectionString("MSSQLConnection");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
