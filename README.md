@@ -5,7 +5,7 @@ Dapper example for ASP.NET Core
 
 有時候突然想寫個 CRUD 的簡單網頁，但就是會忘記之前架構怎麼寫的，所以就寫個範例，方便以後有東西抄XD。
 
-<a href="https://stackoverflow.com/questions/58628889/asp-net-core-testing-get-nullreferenceexception-when-initializing-inmemory-sql" target="_blank">範例下載</a>
+<a href="https://github.com/sholfen/DatabaseRepositoryWebTemplate" target="_blank">範例下載</a>
 
 一開始先在 Startup.cs 設定連線字串：
 ~~~csharp
