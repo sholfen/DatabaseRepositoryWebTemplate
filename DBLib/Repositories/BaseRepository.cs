@@ -13,6 +13,13 @@ namespace DBLib.Repositories
         //protected SqliteConnection _sqlConnection { get; set; }
         protected SqlConnection _sqlConnection { get; set; }
 
+        public static string ConnectionString { get; set; } = string.Empty;
+
+        public BaseRepository()
+        {
+            _sqlConnection = new SqlConnection(ConnectionString);
+        }
+
         public BaseRepository(string connectionString)
         {
             //_sqlConnection = new SqliteConnection(connectionString);
